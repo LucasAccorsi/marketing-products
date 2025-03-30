@@ -2,6 +2,7 @@ package com.marketing.adapter.input.rest.contract.input;
 
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Digits;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -22,7 +23,6 @@ public class ProductUpdateContract {
     private String imageUrl;
     private ProductCategoryContract category;
 
-    @DecimalMin(value = "0.00", inclusive = false)
-    @Digits(integer = 100, fraction=2)
-    private BigDecimal price;
+    @Pattern(regexp = "\\d+\\.\\d{2}", message = "The price must be greater than 0 and have exactly 2 decimal places")
+    private String price;
 }

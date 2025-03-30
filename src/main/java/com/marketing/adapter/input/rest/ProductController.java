@@ -36,7 +36,7 @@ public class ProductController {
 
     @PostMapping
     public ResponseEntity<ProductContract> createProduct(
-            @Valid @NotNull @RequestBody final ProductCreateContract productCreateContract,
+            @Valid @RequestBody final ProductCreateContract productCreateContract,
             HttpServletRequest request) {
         return ResponseEntity.created(URI.create(request.getRequestURL().toString()))
                 .body(productUseCase.createProduct(
@@ -46,9 +46,10 @@ public class ProductController {
     @PatchMapping(path = "/{name}")
     public ResponseEntity<ProductContract> updateProductByName(
             @PathVariable(name = "name") final String name,
-            @Valid @NotNull @RequestBody final ProductUpdateContract productUpdateContract) {
-        return ResponseEntity.ok().body(productUseCase.updateProductByName(
-                ProductMapper.INSTANCE.productUpdateContractToDomain(name, productUpdateContract)));
+            @Valid @RequestBody final ProductUpdateContract productUpdateContract) {
+        return ResponseEntity.ok()
+                .body(productUseCase.updateProductByName(
+                        ProductMapper.INSTANCE.productUpdateContractToDomain(name, productUpdateContract)));
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
@@ -61,11 +62,13 @@ public class ProductController {
     @GetMapping(path = "/{name}")
     public ResponseEntity<ProductContract> getProductByName(
             @PathVariable(name = "name") final String name) {
-        return ResponseEntity.ok().body(productUseCase.getProductByName(name));
+        return ResponseEntity.ok()
+                .body(productUseCase.getProductByName(name));
     }
 
     @GetMapping
     public ResponseEntity<List<ProductContract>> getAllProducts() {
-        return ResponseEntity.ok().body(productUseCase.getAllProducts());
+        return ResponseEntity.ok()
+                .body(productUseCase.getAllProducts());
     }
 }
