@@ -1,11 +1,14 @@
-package com.marketing.products;
+package com.marketing.product;
 
+import com.marketing.ProductsApplication;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class ProductsApplicationTests {
+
 	@Test
-	void contextLoads() {
+	void testMain() {
+		ProductsApplication.main(new String[] {});
 	}
 }
