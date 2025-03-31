@@ -4,17 +4,17 @@ import com.marketing.adapter.output.persistence.entity.ProductEntity;
 import com.marketing.adapter.output.persistence.repositories.ProductRepository;
 import com.marketing.product.domain.Product;
 import com.marketing.product.mapper.ProductMapper;
-import com.marketing.product.port.output.DynamoPort;
+import com.marketing.product.port.output.DynamodbPort;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
-public class Dynamo implements DynamoPort {
+public class Dynamodb implements DynamodbPort {
 
     private final ProductRepository productRepository;
 
-    public Dynamo(ProductRepository productRepository) {
+    public Dynamodb(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
 

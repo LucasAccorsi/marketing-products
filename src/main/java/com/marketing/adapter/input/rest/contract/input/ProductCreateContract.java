@@ -1,5 +1,6 @@
 package com.marketing.adapter.input.rest.contract.input;
 
+import com.marketing.product.util.DateTimeUtil;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -39,15 +40,10 @@ public class ProductCreateContract {
     private String price;
 
     public String getCreatedAt() {
-        return this.getDateTimeNow();
+        return DateTimeUtil.getDateTimeNow();
     }
 
     public String getUpdatedAt() {
-        return this.getDateTimeNow();
-    }
-
-    private String getDateTimeNow() {
-        return LocalDateTime.now()
-                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"));
+        return DateTimeUtil.getDateTimeNow();
     }
 }

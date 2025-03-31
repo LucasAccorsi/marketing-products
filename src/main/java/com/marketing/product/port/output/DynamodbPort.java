@@ -5,7 +5,7 @@ import com.marketing.product.domain.Product;
 
 import java.util.List;
 
-public interface DynamoPort {
+public interface DynamodbPort {
 
     Product createProduct(ProductEntity productEntity);
 

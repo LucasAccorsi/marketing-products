@@ -4,7 +4,7 @@ import com.marketing.adapter.input.rest.contract.output.ProductContract;
 import com.marketing.product.domain.Product;
 import com.marketing.product.mapper.ProductMapper;
 import com.marketing.product.port.input.ProductUseCase;
-import com.marketing.product.port.output.DynamoPort;
+import com.marketing.product.port.output.DynamodbPort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,16 +12,16 @@ import java.util.List;
 @Service
 public class ProductService implements ProductUseCase {
 
-    private final DynamoPort dynamoPort;
+    private final DynamodbPort dynamodbPort;
 
-    public ProductService(DynamoPort dynamoPort) {
-        this.dynamoPort = dynamoPort;
+    public ProductService(DynamodbPort dynamodbPort) {
+        this.dynamodbPort = dynamodbPort;
     }
 
     @Override
     public ProductContract createProduct(Product product) {
         return ProductMapper.INSTANCE.productCreateDomainToContract(
-                dynamoPort.createProduct(
+                dynamodbPort.createProduct(
                     ProductMapper.INSTANCE.productCreateDomainToEntity(product)));
     }
 
