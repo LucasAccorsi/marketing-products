@@ -20,27 +20,34 @@ public class Dynamodb implements DynamodbPort {
 
     @Override
     public Product createProduct(ProductEntity productEntity) {
-        return ProductMapper.INSTANCE.productCreateEntityToDomain(
-                productRepository.save(productEntity));
+        return saveProduct(productEntity);
     }
 
     @Override
     public Product updateProductByName(ProductEntity productEntity) {
-        return null;
+        return saveProduct(productEntity);
     }
 
     @Override
-    public void unavailableProductByName(String name) {
+    public void unavailableProductByName(ProductEntity productEntity) {
+        saveProduct(productEntity);
 
     }
 
     @Override
     public Product getProductByName(String name) {
-        return null;
+        return ProductMapper.INSTANCE.productEntityToDomain(
+                productRepository.findByName(name));
     }
 
     @Override
     public List<Product> getAllProducts() {
-        return List.of();
+        return ProductMapper.INSTANCE.productListEntityToDomain(
+                productRepository.findAll());
+    }
+
+    private Product saveProduct(ProductEntity productEntity) {
+        return ProductMapper.INSTANCE.productEntityToDomain(
+                productRepository.save(productEntity));
     }
 }

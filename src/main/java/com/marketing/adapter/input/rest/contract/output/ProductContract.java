@@ -14,9 +14,8 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductContract {
-    private String id;
-    private ProductStatusContract status;
     private String name;
+    private ProductStatusContract status;
     private String description;
     private String imageUrl;
     private BigDecimal price;

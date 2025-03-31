@@ -7,6 +7,7 @@ import com.marketing.product.port.output.DynamodbPort;
 import com.marketing.product.service.ProductService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 @Configuration
 public class AppConfig {
@@ -18,12 +19,13 @@ public class AppConfig {
     }
 
     @Bean
+    @Primary
     public DynamodbPort dynamoPort() {
         return new Dynamodb(productRepository);
     }
 
     @Bean
-    public ProductUseCase productUseCase() {
-        return new ProductService(dynamoPort());
+    public ProductUseCase productUseCase(DynamodbPort dynamoPort) {
+        return new ProductService(dynamoPort);
     }
 }

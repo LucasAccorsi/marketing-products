@@ -11,7 +11,7 @@ public interface DynamodbPort {
 
     Product updateProductByName(ProductEntity productEntity);
 
-    void unavailableProductByName(String name);
+    void unavailableProductByName(ProductEntity productEntity);
 
     Product getProductByName(String name);
 

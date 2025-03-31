@@ -8,6 +8,6 @@ public class DateTimeUtil {
 
     public static String getDateTimeNow() {
         return LocalDateTime.now()
-                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"));
+                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SS'Z'"));
     }
 }
