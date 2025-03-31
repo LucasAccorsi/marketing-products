@@ -8,7 +8,6 @@ import com.marketing.product.mapper.ProductMapper;
 import com.marketing.product.port.input.ProductUseCase;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;

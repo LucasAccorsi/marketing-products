@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
 
 @Setter
 @Getter
@@ -17,7 +16,7 @@ import java.math.BigInteger;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Product {
-    private BigInteger id;
+    private String id;
     private ProductStatus status;
     private String name;
     private String description;
